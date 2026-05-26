@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
+    <title>NOOR Productions | Mobile Terminal</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="fixed-header">
+        <img src="../Assets/NOOR Productions Branding.png" alt="NOOR Productions Logo">
+    </header>
+
+   <div class="slider-container">
+        <div class="slider-wrapper" id="carouselWrapper">
+            
+            <div class="slide-card" onclick="openLightbox('../Assets/NOOR Productions Branding.png')" style="cursor: pointer;">
+                <img src="../Assets/NOOR Productions Branding.png" alt="Identity Panel">
+            </div>
+            
+            <div class="slide-card" onclick="openLightbox('../Assets/NOOR Productions Profile.png')" style="cursor: pointer;">
+                <img src="../Assets/NOOR Productions Profile.png" alt="Profile Panel">
+            </div>
+            
+            <div class="slide-card" onclick="openLightbox('../Assets/NOOR Productions Catalog.png')" style="cursor: pointer;">
+                <img src="../Assets/NOOR Productions Catalog.png" alt="Catalog Panel">
+            </div>
+            
+        </div>
+    </div>
+    <main class="main-content">
+
+        <h3 class="section-heading">About</h3>
+        <div class="prestige-about-box">
+            NOOR Productions operates as an autonomous digital architecture and animation studio. We specialize in engineering high-fidelity digital systems by utilizing modern procedural syntax frameworks alongside heuristically-driven design models.
+            <br><br>
+            By integrating advanced asset synthesis with clean-room scripting methodologies, we optimize code execution latency and interface fidelity across Java, Python, HTML5, and CSS3 ecosystem environments. Our production lifecycle strictly bypasses low-tier automated public templates, enforcing meticulous frame-by-frame rendering and predictive compilation logic to deploy custom enterprise solutions built cleanly from zero parameters.
+        </div>
+
+        <h3 class="section-heading">Our Services</h3>
+        <div class="table-viewport">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service Layer Matrix</th>
+                        <th>Fixed Tariff Rates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Personal Site Deployment</td><td>₹500 – ₹1,000</td></tr>
+                    <tr><td>Professional Business Platforms*</td><td>₹1,000 & above</td></tr>
+                    <tr><td>Standard System Tools / Apps</td><td>₹1,500 & above</td></tr>
+                    <tr><td>Premium Software Architectures</td><td>₹3,000 & above</td></tr>
+                    <tr><td>Standalone Articles / Copywriting</td><td>₹500 – ₹1,000</td></tr>
+                    <tr><td>Content Strategy + Web Integration</td><td>₹2,000 & above</td></tr>
+                    <tr><td>Content Strategy + Dedicated SEO</td><td>₹2,000 & above</td></tr>
+                    <tr><td>The Growth Engine (Web + Content + SEO)</td><td>₹3,000 & above</td></tr>
+                    <tr><td>Cinematic Animation Production (Per Min)</td><td>₹200 – ₹1,000</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-disclaimer">*Post-delivery modification parameters are static; bargaining scripts are restricted.</p>
+
+        <h3 class="section-heading">Project Catalog</h3>
+        <div class="portfolio-grid">
+            <div class="portfolio-card" onclick="openLightbox('../Assets/NOOR Productions Catalog.png')">
+                <img src="../Assets/NOOR Productions Catalog.png" alt="Product Catalog Sheet">
+                <div class="card-overlay">Tap to Expand</div>
+            </div>
+        </div>
+
+        <h3 class="section-heading">Contact</h3>
+        <div class="contact-card">
+            <p class="contact-meta">Initiate project deployment parameters or request enterprise consultation pathways directly:</p>
+            <a href="mailto:noorproductions.as@gmail.com" class="contact-action-btn">
+                <span>noorproductions.as-@gmail.com</span>
+                <span class="btn-arrow">→</span>
+            </a>
+        </div>
+
+        <div id="lightboxPortal" class="lightbox" onclick="closeLightbox()">
+            <span class="close-portal-btn">&times;</span>
+            <img class="lightbox-content" id="lightboxTargetImage" alt="Fullscreen View Engine">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+
+        <footer class="terminal-footer">
+            <div class="footer-divider"></div>
+            <p class="footer-disclaimer">
+                Disclaimer: NOOR Productions operates as an independent, freelance-driven architecture entity. All custom system assets, interactive script modules, and vector rendering matrix models compiled under this domain are custom-engineered from zero-parameter constraints. Post-deployment environment variables and hosting latency scripts are the sole responsibility of the client layer.
+            </p>
+            <div class="footer-metadata">
+                <span class="meta-status">● System Live</span>
+                <span class="meta-copyright">&copy; 2026 NOOR Productions. All Rights Reserved.</span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+/* ==========================================================================
+   1. GLOBAL SYSTEM RESET & VARIABLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; 
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #0c0e12; 
+    color: #f3f4f6;
+    overflow-x: hidden; 
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   2. FIXED TOP BRANDING HEADER AREA
+   ========================================================================== */
+.fixed-header {
+    width: 100%;
+    background-color: #ffffff; 
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: sticky; 
+    top: 0;
+    z-index: 1000; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.fixed-header img {
+    width: 75%; 
+    max-width: 280px; 
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   3. AUTOMATED CONTENT CAROUSEL STYLES
+   ========================================================================== */
+.slider-container {
+    width: 100%;
+    background: linear-gradient(180deg, #12161f 0%, #0c0e12 100%);
+    padding: 15px 0;
+    border-bottom: 1px solid #1f2635;
+}
+
+.slider-wrapper {
+    display: flex;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth;
+    padding: 0 15px;
+    gap: 15px;
+}
+
+.slider-wrapper::-webkit-scrollbar {
+    display: none; 
+}
+
+.slide-card {
+    /* Critical fix: prevents the display flex from crushing cards to 0 width */
+    flex: 0 0 calc(100% - 30px); 
+    scroll-snap-align: center; 
+    background: #141923;
+    border: 1px solid #222d3f;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.slide-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    object-fit: contain; 
+}
+
+/* ==========================================================================
+   4. MAIN CONTENT & MATRIX TABLE STYLES
+   ========================================================================== */
+.main-content {
+    padding: 20px 15px;
+}
+
+.section-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 15px;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.accent-red {
+    color: #ff2a3b;
+    font-weight: 900;
+}
+
+.prestige-about-box {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #9ca3af;
+    text-align: justify;
+    background: #141923;
+    border-left: 3px solid #ff2a3b;
+    border-radius: 0 8px 8px 0;
+    padding: 16px;
+    margin-bottom: 25px;
+}
+
+/* DATA MATRIX TABLE */
+.table-viewport {
+    width: 100%;
+    overflow-x: auto; 
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid #1f2635;
+    background: #141923;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    text-align: left;
+}
+
+th {
+    background-color: #1a202c;
+    color: #ffffff;
+    padding: 12px 10px;
+    font-weight: 700;
+    border-bottom: 2px solid #222d3f;
+}
+
+td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #1c2331;
+    color: #d1d5db;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background-color: #11151e;
+}
+
+.table-disclaimer {
+    font-size: 0.72rem;
+    color: #525a66;
+    margin-top: 4px;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   6. PORTFOLIO GRID, LIGHTBOX & CONTACT FRAMEWORKS
+   ========================================================================== */
+.portfolio-grid {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.portfolio-card {
+    position: relative;
+    width: 100%;
+    background: #141923;
+    border: 1px solid #1f2635;
+    border-radius: 12px;
+    padding: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.portfolio-card:active {
+    transform: scale(0.98); 
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    background: rgba(12, 14, 18, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ff2a3b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 0 0 6px 6px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* PREMIUM MINIMAL CONTACT PANEL STYLING */
+.contact-card {
+    width: 100%;
+    background: #141923;
+    border: 1px solid #1f2635;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 25px;
+}
+
+.contact-meta {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #9ca3af;
+    margin-bottom: 14px;
+}
+
+.contact-action-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: #1a202c;
+    border: 1px solid #2d3748;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.contact-action-btn:active {
+    background: #2d3748;
+    transform: scale(0.98);
+}
+
+.btn-arrow {
+    color: #ff2a3b;
+    font-weight: 700;
+}
+
+/* THE MODAL OVERLAY MASK */
+.lightbox {
+    display: none; 
+    position: fixed;
+    z-index: 5000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 12, 16, 0.95);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+}
+
+/* FULLSCREEN TARGET IMAGE PARAMETERS */
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 92%;
+    max-width: 450px;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    animation: zoomInPortal 0.25s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+@keyframes zoomInPortal {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* INTERFACE DISMISS BUTTON */
+.close-portal-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.lightbox-caption {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-family: 'Space Grotesk', sans-serif;
+}   
+
+/* ==========================================================================
+   7. MINIMALIST TERMINAL FOOTER STYLES
+   ========================================================================== */
+.terminal-footer {
+    margin-top: 40px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #1f2635 0%, rgba(31, 38, 53, 0.1) 100%);
+    margin-bottom: 15px;
+}
+
+.footer-disclaimer {
+    font-size: 0.70rem;
+    line-height: 1.5;
+    /* Clean, ultra-faint gray opacity match */
+    color: rgba(156, 163, 175, 0.15); 
+    text-align: justify;
+    margin-bottom: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.footer-metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.70rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.meta-status {
+    /* Dimmed the status indicator dot to blend beautifully with the faint footer style */
+    color: rgba(16, 185, 129, 0.35); 
+    font-weight: 500;
+}
+
+.meta-copyright {
+    /* Transparent gray copyright style */
+    color: rgba(156, 163, 175, 0.15); 
+    font-weight: 400;
+}
