@@ -1,52 +1,186 @@
 <!DOCTYPE html>
+<!-- This line tells the browser: "Hey! This file is written in modern HTML." 
+     Without this, the browser might get confused and display things incorrectly. -->
+
 <html lang="en">
+<!-- This is the ROOT tag — it wraps everything on the page, like a box that holds all other boxes.
+     'lang="en"' tells the browser the page is written in English. -->
+
 <head>
+<!-- The HEAD section is like the brain of the page.
+     Nothing inside here is VISIBLE on screen — it just gives the browser instructions. -->
+
     <meta charset="UTF-8">
+    <!-- This tells the browser which 'alphabet' to use to read the code.
+         UTF-8 supports almost every language and special character in the world (like ₹). -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
+    <!-- This is the MOBILE instruction tag.
+         It tells the browser: "Make the page fit the phone screen perfectly."
+         'maximum-scale=3.0' lets the user pinch-zoom up to 3x on mobile.
+         Without this, the page would look like a tiny zoomed-out desktop site on a phone. -->
+
     <title>NOOR Productions | Mobile Terminal</title>
-    
+    <!-- This sets the TEXT that appears on the browser TAB at the top of your phone/computer.
+         Visually: you'll see "NOOR Productions | Mobile Terminal" on the tab. -->
+
+    <!-- ============================================
+         FONT LOADER — Importing our custom typefaces
+         ============================================ -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- These two lines tell the browser to start connecting to Google's font servers EARLY,
+         before it even asks for the fonts. This makes fonts load faster.
+         Think of it like calling ahead to a restaurant before you arrive. -->
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <!-- This actually DOWNLOADS our two custom fonts from Google:
+         - 'Montserrat' (Bold & Black weights) — used for big headings
+         - 'Space Grotesk' (Regular, Medium, Bold) — used for body text and UI labels
+         These give the page its clean, modern, terminal-style look. -->
+
     <link rel="stylesheet" href="style.css">
+    <!-- This connects our separate CSS file to this HTML file.
+         The CSS file is where ALL the colors, sizes, and styling rules live.
+         Visually: this is what turns plain text into the dark, styled interface you see. -->
+
 </head>
+
 <body>
+<!-- The BODY tag is where everything VISIBLE lives.
+     Everything inside here is what the user actually sees and interacts with on screen. -->
+
+
+    <!-- ============================================
+         FIXED HEADER — The sticky logo bar at the top
+         ============================================ -->
 
     <header class="fixed-header">
+    <!-- This is the TOP BAR that stays stuck to the top of the screen even when you scroll.
+         Like a navigation bar that never moves — it always floats above the content.
+         The class 'fixed-header' tells our CSS file how to style and position it. -->
+
         <img src="Assets/NOOR Productions Branding.png" alt="NOOR Productions Logo">
+        <!-- This loads and displays the NOOR Productions logo image inside the header bar.
+             'src' is the path to the image file inside our Assets folder.
+             'alt' is a text description shown if the image fails to load (also used by screen readers). -->
+
     </header>
 
+
+    <!-- ============================================
+         IMAGE CAROUSEL — The auto-scrolling card slider
+         ============================================ -->
+
     <div class="slider-container">
+    <!-- This is the OUTER FRAME of our image slider.
+         Think of it like a picture frame — it defines the visible window size.
+         Anything that goes beyond the frame edges will be hidden (overflow is clipped). -->
+
         <div class="slider-wrapper" id="carouselWrapper">
+        <!-- This is the INNER TRACK that holds all the slide cards side by side in a row.
+             'id="carouselWrapper"' gives it a unique name so our JavaScript can grab it
+             and make it scroll automatically every 4.5 seconds. -->
+
+
+            <!-- SLIDE 1 — Branding Identity Card -->
             <div class="slide-card" onclick="openLightbox('Assets/NOOR Productions Branding.png')" style="cursor: pointer;">
+            <!-- This is one SLIDE CARD in the carousel.
+                 'onclick' means: when the user taps this card, call the 'openLightbox' function
+                 and pass it the image path — this will open the image in full-screen view.
+                 'cursor: pointer' makes the mouse cursor turn into a hand icon on hover,
+                 hinting to the user that this is tappable/clickable. -->
+
                 <img src="Assets/NOOR Productions Branding.png" alt="Identity Panel">
+                <!-- Displays the NOOR Productions branding image inside this slide card.
+                     Visually: this is the first image the user sees in the scrolling slider. -->
+
             </div>
-            
+
+
+            <!-- SLIDE 2 — Profile Card -->
             <div class="slide-card" onclick="openLightbox('Assets/NOOR Productions Profile.png')" style="cursor: pointer;">
+            <!-- Second slide card. When tapped, it opens the Profile image in the lightbox full-screen viewer.
+                 Visually: this is the second card in the scrolling image strip. -->
+
                 <img src="Assets/NOOR Productions Profile.png" alt="Profile Panel">
+                <!-- Displays the NOOR Productions profile image inside this card. -->
+
             </div>
-            
-            </div>
+
+        </div>
+        <!-- END of slider-wrapper (the scrolling inner track) -->
+
     </div>
+    <!-- END of slider-container (the outer frame/window) -->
+
+
+    <!-- ============================================
+         MAIN CONTENT — All sections below the carousel
+         ============================================ -->
 
     <main class="main-content">
+    <!-- The MAIN tag wraps all the primary content of the page.
+         It signals to the browser: "This is the most important part of the page."
+         The class 'main-content' links it to our CSS layout and padding rules. -->
+
+
+        <!-- ---- ABOUT SECTION ---- -->
 
         <h3 class="section-heading">About</h3>
+        <!-- This is a SECTION HEADING — a bold title label that introduces each section.
+             'h3' means it's a Level 3 heading (smaller than h1/h2 but still prominent).
+             Visually: it appears as a styled label like "ABOUT" above the text block. -->
+
         <div class="prestige-about-box">
+        <!-- This is the ABOUT TEXT BOX — a styled container for the description paragraph.
+             The class 'prestige-about-box' applies special styling in CSS:
+             likely a dark card with a red left-border accent, matching the terminal theme. -->
+
             NOOR Productions operates as an autonomous digital architecture and animation studio. We specialize in engineering high-fidelity digital systems by utilizing modern procedural syntax frameworks alongside heuristically-driven design models.
+            <!-- This is the plain text content describing NOOR Productions.
+                 Visually: it appears as justified body text inside the styled dark box. -->
+
         </div>
 
+
+        <!-- ---- SERVICES SECTION ---- -->
+
         <h3 class="section-heading">Our Services</h3>
+        <!-- Section heading for the pricing/services area. -->
+
         <div class="table-viewport">
+        <!-- This is a SCROLLABLE WRAPPER for the table below.
+             On small phone screens, wide tables would break the layout.
+             This box allows the table to scroll LEFT and RIGHT (horizontal scroll)
+             without breaking the page. Think of it as a window you can pan sideways. -->
+
             <table>
+            <!-- This is an HTML TABLE — data arranged in rows and columns,
+                 like a spreadsheet. It shows our services and their prices. -->
+
                 <thead>
+                <!-- THEAD = Table Head. This is the TOP ROW of the table — the column labels.
+                     Visually: it appears darker/bolder than the data rows below it. -->
+
                     <tr>
+                    <!-- TR = Table Row. One horizontal row in the table. -->
+
                         <th>Service Layer Matrix</th>
+                        <!-- TH = Table Header cell. Displays the column title "Service Layer Matrix".
+                             Visually: bold text, acts as the label for the left column. -->
+
                         <th>Fixed Tariff Rates</th>
+                        <!-- Column title for the right (pricing) column. -->
+
                     </tr>
                 </thead>
+
                 <tbody>
+                <!-- TBODY = Table Body. All the actual DATA rows go here.
+                     Each row is one service with its price. -->
+
                     <tr><td>Personal Site Deployment</td><td>₹500 – ₹1,000</td></tr>
                     <tr><td>Professional Business Platforms*</td><td>₹1,000 & above</td></tr>
                     <tr><td>Standard System Tools / Apps</td><td>₹1,500 & above</td></tr>
@@ -56,43 +190,163 @@
                     <tr><td>Content Strategy + Dedicated SEO</td><td>₹2,000 & above</td></tr>
                     <tr><td>The Growth Engine (Web + Content + SEO)</td><td>₹3,000 & above</td></tr>
                     <tr><td>Cinematic Animation Production (Per Min)</td><td>₹200 – ₹1,000</td></tr>
+                    <!-- Each TR here is one service row.
+                         TD = Table Data cell (regular, non-bold).
+                         Left TD = service name | Right TD = price range.
+                         Visually: alternating rows in the dark-themed table. -->
+
                 </tbody>
             </table>
+
         </div>
+        <!-- END of table-viewport (the horizontal scroll wrapper) -->
+
         <p class="table-disclaimer">*Post-delivery modification parameters are static; bargaining scripts are restricted.</p>
+        <!-- This is a small DISCLAIMER line below the table.
+             It clarifies that the asterisk (*) on 'Professional Business Platforms' means:
+             prices are fixed after delivery — no renegotiation.
+             Visually: small, dimmed text beneath the services table. -->
+
+
+        <!-- ---- PROJECT CATALOG SECTION ---- -->
 
         <h3 class="section-heading">Project Catalog</h3>
+        <!-- Section heading for the portfolio/catalog area. -->
+
         <div class="portfolio-grid">
+        <!-- This is a GRID CONTAINER for the catalog images.
+             Even though there is only one image now, the grid layout allows
+             more cards to be added later without changing the structure. -->
+
             <div class="portfolio-card" onclick="openLightbox('Assets/catalog.png')">
+            <!-- This is one PORTFOLIO CARD — a clickable image tile.
+                 When tapped, 'openLightbox' is called to display the catalog image
+                 in full-screen overlay mode. -->
+
                 <img src="Assets/catalog.png" alt="Product Catalog Sheet">
+                <!-- Displays the catalog image inside the portfolio card tile. -->
+
                 <div class="card-overlay">Tap to Expand</div>
+                <!-- This is a HOVER/TAP OVERLAY label that appears ON TOP of the image.
+                     Visually: a semi-transparent layer with the text "Tap to Expand"
+                     to hint to the user that the image is interactive. -->
+
             </div>
+
         </div>
+        <!-- END of portfolio-grid -->
+
+
+        <!-- ---- CONTACT SECTION ---- -->
 
         <h3 class="section-heading">Contact</h3>
+        <!-- Section heading for contact details. -->
+
         <div class="contact-card">
+        <!-- This is the CONTACT CARD container — a styled box that holds the email button. -->
+
             <a href="mailto:noorproductions.as@gmail.com" class="contact-action-btn">
+            <!-- This is a MAILTO LINK — when tapped on a phone, it opens the user's
+                 email app with the address already filled in, ready to send a message.
+                 'class="contact-action-btn"' styles it to look like a full-width button. -->
+
                 <span>noorproductions.as-@gmail.com</span>
+                <!-- Displays the email address as visible text inside the button. -->
+
                 <span class="btn-arrow">→</span>
+                <!-- This is the ARROW ICON on the right side of the button (→).
+                     Visually: it signals "tap this to go somewhere" — a directional cue. -->
+
             </a>
+
         </div>
+        <!-- END of contact-card -->
+
+
+        <!-- ============================================
+         LIGHTBOX PORTAL — The full-screen image viewer overlay
+         ============================================ -->
 
         <div id="lightboxPortal" class="lightbox" onclick="closeLightbox()">
+        <!-- This is the LIGHTBOX — a full-screen dark overlay that appears on top of
+             everything else when the user taps a card or carousel image.
+             It is INVISIBLE by default and only shows when triggered by JavaScript.
+             'onclick="closeLightbox()"' means: tapping anywhere on the dark overlay closes it.
+             'id="lightboxPortal"' gives it a unique name so JS can show/hide it. -->
+
             <span class="close-portal-btn">&times;</span>
+            <!-- This is the CLOSE BUTTON — the × (X) symbol in the corner.
+                 '&times;' is an HTML code that renders the × character.
+                 Visually: a white X in the top-right corner of the lightbox overlay. -->
+
             <img class="lightbox-content" id="lightboxTargetImage" alt="Fullscreen View Engine">
+            <!-- This is the IMAGE inside the lightbox.
+                 It has no 'src' yet — JavaScript fills it in dynamically when a card is tapped.
+                 Visually: the tapped image appears here, enlarged to fit the full screen. -->
+
             <div id="lightboxCaption" class="lightbox-caption"></div>
+            <!-- This is a CAPTION BOX below the lightbox image.
+                 It's empty for now but can be filled via JavaScript to show image descriptions.
+                 Visually: small text displayed beneath the full-screen image. -->
+
         </div>
+        <!-- END of lightboxPortal -->
+
+
+        <!-- ============================================
+         TERMINAL FOOTER — The bottom status bar
+         ============================================ -->
 
         <footer class="terminal-footer">
+        <!-- The FOOTER is the very bottom section of the page.
+             'terminal-footer' styles it to look like a command-line status bar,
+             consistent with the industrial/terminal theme. -->
+
             <div class="footer-divider"></div>
+            <!-- This is a thin HORIZONTAL LINE (divider) that visually separates
+                 the footer from the content above it.
+                 Like a ruled line at the bottom of a page. -->
+
             <p class="footer-disclaimer">Disclaimer: NOOR Productions operates as an independent, freelance-driven architecture entity.</p>
+            <!-- This is the LEGAL DISCLAIMER paragraph.
+                 Visually: small, dimmed text near the bottom of the page. -->
+
             <div class="footer-metadata">
+            <!-- This is a ROW containing two pieces of metadata displayed side by side:
+                 the system status indicator and the copyright notice. -->
+
                 <span class="meta-status">● System Live</span>
+                <!-- The GREEN DOT + "System Live" text — a visual indicator showing
+                     the site/system is online and running.
+                     The ● symbol acts as a glowing status light in the terminal theme. -->
+
                 <span class="meta-copyright">&copy; 2026 NOOR Productions. All Rights Reserved.</span>
+                <!-- The COPYRIGHT notice. '&copy;' renders the © symbol.
+                     Visually: small text on the right side of the footer bar. -->
+
             </div>
+            <!-- END of footer-metadata -->
+
         </footer>
+        <!-- END of terminal-footer -->
+
     </main>
+    <!-- END of main-content -->
+
+
+    <!-- ============================================
+         SCRIPT LOADER — Connecting our JavaScript file
+         ============================================ -->
 
     <script src="script.js"></script>
+    <!-- This loads our JavaScript file at the VERY BOTTOM of the page.
+         Placing it here is intentional — it ensures all the HTML above has
+         fully loaded before the script runs. This prevents errors where JS
+         tries to control elements that don't exist yet.
+         The script handles: auto-scrolling carousel + lightbox open/close logic. -->
+
 </body>
+<!-- END of body — nothing visible goes below this line -->
+
 </html>
+<!-- END of the entire HTML document -->

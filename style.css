@@ -1,192 +1,512 @@
 /* ==========================================================================
    1. GLOBAL SYSTEM RESET & VARIABLES
+   
+   Think of this as the "clean slate" rule.
+   Before we style anything, we erase all the default spacing and sizing
+   that different browsers add automatically — so every browser shows
+   our page the same way.
    ========================================================================== */
+
 * {
+    /* The * means "apply this to EVERY single element on the page."
+       Like telling every kid in class to empty their pockets before a test. */
+
     margin: 0;
+    /* Removes all outer spacing around every element by default.
+       Visually: eliminates unwanted white gaps between sections. */
+
     padding: 0;
+    /* Removes all inner spacing inside every element by default.
+       Visually: text won't be pushed away from the edges unexpectedly. */
+
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; 
+    /* Changes how width is calculated. Normally, padding ADDS to the width.
+       With this rule, padding is INCLUDED in the width — so a 100px box
+       stays 100px even after padding is added. Prevents layout breakage. */
+
+    -webkit-tap-highlight-color: transparent;
+    /* On mobile, when you tap a link or button, the browser normally flashes
+       a blue/grey highlight box over it. This removes that flash entirely.
+       Visually: tapping elements feels clean and native, not flashy. */
 }
 
 body {
+    /* The BODY rule styles the entire visible page area. */
+
     font-family: 'Space Grotesk', sans-serif;
-    background-color: #0c0e12; 
+    /* Sets the default font for ALL text on the page to 'Space Grotesk'.
+       'sans-serif' is the backup font if Space Grotesk fails to load.
+       Visually: gives the page its clean, modern, terminal-style typeface. */
+
+    background-color: #0c0e12;
+    /* Sets the page background to a very dark navy-black color (#0c0e12).
+       Visually: this is the deep dark canvas the entire interface sits on. */
+
     color: #f3f4f6;
-    overflow-x: hidden; 
+    /* Sets the default text color to an off-white (#f3f4f6).
+       Visually: all text glows softly against the dark background. */
+
+    overflow-x: hidden;
+    /* Hides any content that accidentally sticks out to the RIGHT of the page.
+       Visually: prevents an unwanted horizontal scrollbar from appearing. */
+
     max-width: 100%;
+    /* Ensures the page body never grows wider than the screen width.
+       Visually: keeps everything contained within the viewport. */
 }
+
 
 /* ==========================================================================
    2. FIXED TOP BRANDING HEADER AREA
+   
+   This section styles the top bar that holds the NOOR logo.
+   It stays STUCK to the top of the screen even when the user scrolls down.
    ========================================================================== */
+
 .fixed-header {
     width: 100%;
-    background-color: #ffffff; 
+    /* Makes the header stretch the full width of the screen. */
+
+    background-color: #ffffff;
+    /* The header background is WHITE — creating a strong contrast against
+       the dark page. Visually: the logo pops on a clean white bar at the top. */
+
     padding: 10px 15px;
+    /* Adds breathing room: 10px top & bottom, 15px left & right.
+       Visually: the logo isn't squished against the edges. */
+
     display: flex;
-    justify-content: center; 
+    /* Activates Flexbox — a layout tool that lines children up in a row
+       and gives us easy control over their alignment. */
+
+    justify-content: center;
+    /* Centers the logo HORIZONTALLY inside the header bar.
+       Visually: the logo sits perfectly in the middle of the white bar. */
+
     align-items: center;
-    position: sticky; 
+    /* Centers the logo VERTICALLY inside the header bar.
+       Visually: the logo is perfectly middle-aligned top-to-bottom. */
+
+    position: sticky;
+    /* Makes the header STICK to its position when the user scrolls.
+       Unlike 'fixed', sticky respects the page flow and doesn't overlap content
+       until the user scrolls past it. */
+
     top: 0;
-    z-index: 1000; 
+    /* Combined with 'sticky': sticks the header to the very TOP of the screen.
+       Visually: the header is always visible at the top, no matter how far you scroll. */
+
+    z-index: 1000;
+    /* Controls the LAYERING ORDER. Higher number = on top of other elements.
+       1000 ensures the header floats above all other content when scrolling.
+       Visually: nothing overlaps or hides the header bar. */
+
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    /* Adds a soft dark shadow BELOW the header.
+       Visually: creates a subtle depth effect, separating the header from
+       the content beneath it. */
 }
 
 .fixed-header img {
-    width: 75%; 
-    max-width: 280px; 
+    /* Styles the logo IMAGE specifically inside the header. */
+
+    width: 75%;
+    /* The logo takes up 75% of the header's width on mobile.
+       Visually: large and prominent but not edge-to-edge. */
+
+    max-width: 280px;
+    /* On wider screens, the logo won't grow beyond 280px.
+       Visually: prevents the logo from becoming oversized on tablets/desktops. */
+
     height: auto;
+    /* Lets the height adjust automatically based on the width.
+       Visually: the logo never gets stretched or squished. */
+
     display: block;
+    /* Removes the tiny default gap that appears below inline images.
+       Visually: eliminates an unwanted space under the logo. */
 }
+
 
 /* ==========================================================================
    3. AUTOMATED CONTENT CAROUSEL STYLES
+   
+   This section styles the image slider below the header.
+   Cards sit side by side in a row and snap into place as you scroll.
    ========================================================================== */
+
 .slider-container {
+    /* The OUTER FRAME of the entire carousel section. */
+
     width: 100%;
+    /* Stretches the slider area to full screen width. */
+
     background: linear-gradient(180deg, #12161f 0%, #0c0e12 100%);
+    /* Applies a TOP-TO-BOTTOM gradient:
+       - Starts at a slightly lighter dark (#12161f) at the top
+       - Fades to the page background color (#0c0e12) at the bottom
+       Visually: the slider section blends smoothly into the page beneath it. */
+
     padding: 15px 0;
+    /* Adds 15px of space above and below the carousel track.
+       Visually: the cards don't touch the edges of their container. */
+
     border-bottom: 1px solid #1f2635;
+    /* A thin horizontal line at the bottom of the slider section.
+       Visually: acts as a subtle dark divider between the carousel and content below. */
 }
 
 .slider-wrapper {
+    /* The INNER TRACK that holds all slide cards in a horizontal row. */
+
     display: flex;
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
+    /* Lines all slide cards up SIDE BY SIDE in a row using Flexbox. */
+
+    overflow-x: auto;
+    /* Allows the track to scroll LEFT and RIGHT when cards overflow.
+       Visually: you can swipe/drag to see cards that are off-screen. */
+
+    scroll-snap-type: x mandatory;
+    /* Activates SNAP SCROLLING on the horizontal axis.
+       'mandatory' means the scroll always snaps to a card — never stops in between.
+       Visually: the carousel snaps cleanly to each card, one at a time. */
+
     scroll-behavior: smooth;
+    /* Makes all scrolling movements glide smoothly instead of jumping.
+       Visually: the auto-scroll and manual swipe both look fluid and polished. */
+
     padding: 0 15px;
+    /* Adds 15px of side padding so the first and last cards don't touch screen edges. */
+
     gap: 15px;
+    /* Adds 15px of empty space BETWEEN each slide card.
+       Visually: cards are separated by a small gap, not crammed together. */
 }
 
 .slider-wrapper::-webkit-scrollbar {
-    display: none; 
+    display: none;
+    /* Hides the scrollbar on mobile and Chrome/Safari browsers.
+       Visually: the carousel looks clean with no visible scroll track underneath. */
 }
 
 .slide-card {
-    /* Critical fix: prevents the display flex from crushing cards to 0 width */
-    flex: 0 0 calc(100% - 30px); 
-    scroll-snap-align: center; 
+    /* Styles each individual CARD inside the carousel. */
+
+    flex: 0 0 calc(100% - 30px);
+    /* CRITICAL rule — tells the card: "Never shrink, never grow. Always be
+       exactly (100% of the container width minus 30px) wide."
+       The 30px accounts for the 15px padding on each side.
+       Visually: each card fills almost the full screen width, one at a time. */
+
+    scroll-snap-align: center;
+    /* When snapping, this card should align to the CENTER of the scroll view.
+       Visually: each card sits perfectly centered in the frame when snapped. */
+
     background: #141923;
+    /* Dark card background color (#141923).
+       Visually: the card has a slightly lighter shade than the page background. */
+
     border: 1px solid #222d3f;
+    /* A thin dark-blue border around each card.
+       Visually: gives the card a subtle defined edge in the dark theme. */
+
     border-radius: 12px;
+    /* Rounds the corners of each card by 12px.
+       Visually: smooth, modern rounded rectangle cards. */
+
     padding: 10px;
+    /* Inner spacing of 10px around the image inside each card.
+       Visually: the image sits inside the card with a small border gap. */
+
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Centers the image inside the card both horizontally and vertically. */
+
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    /* A dark shadow beneath each card.
+       Visually: cards appear to float slightly above the background. */
 }
 
 .slide-card img {
+    /* Styles the IMAGE inside each slide card. */
+
     width: 100%;
+    /* Image stretches to fill the full width of the card. */
+
     height: auto;
+    /* Height adjusts automatically — image never stretches vertically. */
+
     border-radius: 8px;
+    /* Slightly rounded corners on the image itself (slightly less than the card's 12px).
+       Visually: the image corners match the card's rounded style. */
+
     display: block;
-    object-fit: contain; 
+    /* Removes the default inline gap beneath images. */
+
+    object-fit: contain;
+    /* Scales the image to FIT inside its container without cropping.
+       Visually: the full image is always visible, with no parts cut off. */
 }
+
 
 /* ==========================================================================
    4. MAIN CONTENT & MATRIX TABLE STYLES
+   
+   Styles the padding, headings, about box, and the services pricing table.
    ========================================================================== */
+
 .main-content {
     padding: 20px 15px;
+    /* Adds 20px top/bottom and 15px left/right padding to the main content area.
+       Visually: all sections have comfortable breathing room from the screen edges. */
 }
 
 .section-heading {
+    /* Styles the bold title label above each section (e.g. "About", "Services"). */
+
     font-family: 'Montserrat', sans-serif;
+    /* Uses the Montserrat font for headings — heavier and more impactful
+       than Space Grotesk, giving headings a commanding visual weight. */
+
     font-size: 1.3rem;
+    /* Sets heading size to 1.3x the base font size.
+       Visually: headings are noticeably larger than body text. */
+
     font-weight: 700;
+    /* Bold weight — makes headings thick and strong.
+       Visually: each section label stands out clearly. */
+
     color: #ffffff;
+    /* Pure white heading text against the dark background.
+       Visually: maximum contrast, crisp and clean. */
+
     margin-top: 15px;
+    /* Adds space ABOVE each heading to separate it from the section above.
+       Visually: sections breathe and don't feel cramped. */
+
     margin-bottom: 12px;
+    /* Adds space BELOW each heading before the content starts.
+       Visually: the heading and its content section feel connected but spaced. */
+
     letter-spacing: -0.5px;
+    /* Pulls the letters in the heading slightly CLOSER together by 0.5px.
+       Visually: gives headings a tight, modern, magazine-style look. */
 }
 
 .accent-red {
     color: #ff2a3b;
+    /* Sets text color to the brand red (#ff2a3b).
+       Visually: any text with this class glows red — used for key accent words. */
+
     font-weight: 900;
+    /* Maximum font weight — the heaviest, thickest version of the font.
+       Visually: red accent text is extra bold and punchy. */
 }
 
 .prestige-about-box {
+    /* Styles the dark card that contains the About section paragraph. */
+
     font-size: 0.88rem;
+    /* Slightly smaller than the default base font size.
+       Visually: body text inside the box is compact and readable. */
+
     line-height: 1.6;
+    /* Sets the space between lines of text to 1.6x the font size.
+       Visually: text is comfortable to read — not too cramped, not too spread. */
+
     color: #9ca3af;
+    /* A muted, medium-gray text color.
+       Visually: the body text is softer than the headings, creating hierarchy. */
+
     text-align: justify;
+    /* Aligns text so both the left AND right edges form straight lines.
+       Visually: the paragraph looks neat and structured, like a printed document. */
+
     background: #141923;
+    /* The about box has a dark card background.
+       Visually: it sits as a distinct dark panel against the page background. */
+
     border-left: 3px solid #ff2a3b;
+    /* A 3px solid RED LINE on the LEFT side of the box.
+       Visually: this is the signature red accent bar — the most striking design
+       detail of the about section, giving it a bold, editorial feel. */
+
     border-radius: 0 8px 8px 0;
+    /* Rounds the TOP-RIGHT and BOTTOM-RIGHT corners only (8px each).
+       The left side stays sharp (0px) because it has the red border line.
+       Visually: the box looks like a flagged or tagged panel. */
+
     padding: 16px;
+    /* 16px of inner spacing on all sides.
+       Visually: the text doesn't press against the card's edges. */
+
     margin-bottom: 25px;
+    /* 25px of space below the about box before the next section.
+       Visually: comfortable gap between About and Services. */
 }
 
-/* DATA MATRIX TABLE */
+
+/* DATA MATRIX TABLE
+   Styles the services pricing table section. */
+
 .table-viewport {
+    /* The horizontal-scroll WRAPPER around the table. */
+
     width: 100%;
-    overflow-x: auto; 
+    overflow-x: auto;
+    /* Allows the table to scroll left/right on small screens.
+       Visually: on narrow phones, users can swipe to see full table columns. */
+
     margin-bottom: 8px;
+    /* Small gap below the table wrapper. */
+
     border-radius: 8px;
+    /* Rounded corners on the table wrapper container.
+       Visually: the table looks like a rounded card, not a sharp-edged block. */
+
     border: 1px solid #1f2635;
+    /* Thin dark border around the entire table container.
+       Visually: defines the table as a contained panel. */
+
     background: #141923;
+    /* Dark background for the whole table area. */
 }
 
 table {
     width: 100%;
+    /* Table stretches to fill its container fully. */
+
     border-collapse: collapse;
+    /* Merges the borders between table cells into single lines.
+       Visually: no double borders between rows — clean, minimal lines. */
+
     font-size: 0.82rem;
+    /* Slightly small font for table data — keeps rows compact on mobile. */
+
     text-align: left;
+    /* All table text aligns to the LEFT by default. */
 }
 
 th {
+    /* Styles the TABLE HEADER cells (the top row labels). */
+
     background-color: #1a202c;
+    /* Slightly lighter dark shade for header cells.
+       Visually: the header row is visually distinct from the data rows. */
+
     color: #ffffff;
+    /* White text in the header row for maximum contrast. */
+
     padding: 12px 10px;
+    /* 12px top/bottom, 10px left/right padding inside header cells.
+       Visually: header text has comfortable spacing. */
+
     font-weight: 700;
+    /* Bold header text. */
+
     border-bottom: 2px solid #222d3f;
+    /* A slightly thicker border BELOW the header row.
+       Visually: creates a clear visual separator between the headers and data. */
 }
 
 td {
+    /* Styles all regular TABLE DATA cells. */
+
     padding: 11px 10px;
+    /* Comfortable padding inside each data cell.
+       Visually: text isn't crammed against cell borders. */
+
     border-bottom: 1px solid #1c2331;
+    /* A thin dark line below each row.
+       Visually: rows are cleanly separated by subtle lines. */
+
     color: #d1d5db;
+    /* Light grey text for table data — slightly softer than pure white.
+       Visually: data text is readable but less dominant than headings. */
 }
 
 tr:last-child td {
     border-bottom: none;
+    /* Removes the bottom border from the LAST row of the table.
+       Visually: the last row doesn't have a redundant border line
+       sitting right against the table container's own border. */
 }
 
 tr:nth-child(even) {
     background-color: #11151e;
+    /* Every EVEN-NUMBERED row (2nd, 4th, 6th...) gets a slightly different
+       dark shade as its background.
+       Visually: alternating row colors — called "zebra striping" —
+       making it easier to read across each row. */
 }
 
 .table-disclaimer {
+    /* Styles the small footnote text below the table. */
+
     font-size: 0.72rem;
+    /* Very small font size — this is intentionally tiny footnote text. */
+
     color: #525a66;
+    /* A dark, muted grey color.
+       Visually: the disclaimer is barely visible — present but not distracting. */
+
     margin-top: 4px;
     margin-bottom: 25px;
+    /* Small top gap, larger bottom gap before the next section. */
+
     line-height: 1.4;
+    /* Comfortable line spacing for the small footnote text. */
 }
+
 
 /* ==========================================================================
    6. PORTFOLIO GRID, LIGHTBOX & CONTACT FRAMEWORKS
+   
+   Styles the project catalog card, the full-screen image viewer (lightbox),
+   and the contact button panel.
    ========================================================================== */
+
 .portfolio-grid {
     width: 100%;
+    /* Catalog grid stretches full width. */
+
     margin-bottom: 25px;
+    /* Space below the catalog section before Contact. */
 }
 
 .portfolio-card {
+    /* Styles each individual catalog/portfolio image card. */
+
     position: relative;
+    /* Sets the card as the POSITIONING PARENT for its children.
+       This is needed so the overlay label can be placed on top of the image
+       using absolute positioning. */
+
     width: 100%;
     background: #141923;
     border: 1px solid #1f2635;
     border-radius: 12px;
     padding: 8px;
+    /* Standard dark card styling — same family as the slide cards. */
+
     cursor: pointer;
+    /* Shows a hand/pointer cursor on hover, signaling the card is clickable.
+       Visually: user knows this is an interactive, tappable element. */
+
     overflow: hidden;
+    /* Clips any child content that goes outside the card's rounded boundary.
+       Visually: the overlay label respects the card's rounded corners. */
+
     transition: transform 0.2s ease;
+    /* Sets up a smooth 0.2-second animation for any transform changes.
+       Used by the :active rule below for the press effect. */
 }
 
 .portfolio-card:active {
-    transform: scale(0.98); 
+    transform: scale(0.98);
+    /* When the user TAPS and holds the card, it shrinks to 98% of its size.
+       Visually: a subtle "press-in" feedback effect, like a physical button click. */
 }
 
 .portfolio-card img {
@@ -194,164 +514,340 @@ tr:nth-child(even) {
     height: auto;
     border-radius: 8px;
     display: block;
+    /* Standard image rules — full width, auto height, rounded corners, no gap. */
 }
 
 .card-overlay {
+    /* The "Tap to Expand" label that floats on top of the catalog image. */
+
     position: absolute;
+    /* Positions this element RELATIVE TO its parent (.portfolio-card).
+       It won't affect the layout of other elements. */
+
     bottom: 8px;
     left: 8px;
     right: 8px;
+    /* Pins the overlay to the BOTTOM of the card, with 8px from each side.
+       Visually: the label sits at the bottom edge of the image card. */
+
     background: rgba(12, 14, 18, 0.85);
+    /* A semi-transparent very dark background (85% opacity).
+       Visually: you can faintly see the image through the overlay. */
+
     backdrop-filter: blur(4px);
+    /* Blurs whatever is BEHIND the overlay by 4px.
+       Visually: the label has a frosted-glass effect over the image beneath it. */
+
     color: #ff2a3b;
+    /* Red text for the "Tap to Expand" label — brand accent color.
+       Visually: the label catches the eye immediately against the dark overlay. */
+
     font-size: 0.75rem;
     font-weight: 700;
     text-align: center;
     padding: 8px 0;
+    /* Small, bold, centered label text with vertical padding. */
+
     border-radius: 0 0 6px 6px;
+    /* Rounds only the BOTTOM-LEFT and BOTTOM-RIGHT corners.
+       The top stays sharp because it sits in the middle of the image.
+       Visually: the overlay label's corners align with the card's bottom corners. */
+
     font-family: 'Space Grotesk', sans-serif;
 }
 
+
 /* PREMIUM MINIMAL CONTACT PANEL STYLING */
+
 .contact-card {
+    /* The dark container box that holds the email button. */
+
     width: 100%;
     background: #141923;
     border: 1px solid #1f2635;
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 25px;
+    /* Standard dark card styling with comfortable padding and bottom spacing. */
 }
 
 .contact-meta {
+    /* Optional metadata/description text inside the contact card. */
+
     font-size: 0.85rem;
     line-height: 1.5;
     color: #9ca3af;
+    /* Small, muted gray text. */
+
     margin-bottom: 14px;
+    /* Space between this text and the button below it. */
 }
 
 .contact-action-btn {
+    /* Styles the EMAIL button link inside the contact card. */
+
     display: flex;
+    /* Uses Flexbox to line up the email text and arrow icon side by side. */
+
     justify-content: space-between;
+    /* Pushes the email text to the LEFT and the arrow → to the RIGHT.
+       Visually: the button looks like a full-width row with text on one side
+       and an arrow on the other. */
+
     align-items: center;
+    /* Vertically centers the text and arrow within the button. */
+
     width: 100%;
+    /* Button stretches full width of its container. */
+
     background: #1a202c;
     border: 1px solid #2d3748;
     border-radius: 8px;
     padding: 14px 16px;
+    /* Dark button background with border and comfortable padding.
+       Visually: a well-defined, tappable dark button. */
+
     color: #ffffff;
     font-size: 0.85rem;
     font-weight: 500;
     text-decoration: none;
+    /* White text, no underline (it's a link styled as a button). */
+
     transition: all 0.2s ease;
+    /* Smooth animation for the :active press state below. */
 }
 
 .contact-action-btn:active {
     background: #2d3748;
     transform: scale(0.98);
+    /* On tap: slightly darker background + 2% shrink.
+       Visually: physical button press feedback. */
 }
 
 .btn-arrow {
     color: #ff2a3b;
     font-weight: 700;
+    /* The → arrow on the right side of the contact button is styled in brand RED.
+       Visually: it draws the eye and reinforces the interactive "go" direction. */
 }
 
-/* THE MODAL OVERLAY MASK */
+
+/* THE MODAL OVERLAY MASK
+   The lightbox is the full-screen dark overlay that appears when
+   an image is tapped — like a popup viewer. */
+
 .lightbox {
-    display: none; 
+    display: none;
+    /* The lightbox is INVISIBLE by default.
+       JavaScript will change this to 'flex' when an image is tapped. */
+
     position: fixed;
-    z-index: 5000; 
+    /* The lightbox is FIXED to the screen — it doesn't scroll with the page.
+       It always covers the full visible screen regardless of scroll position. */
+
+    z-index: 5000;
+    /* Extremely high layer value — ensures the lightbox appears on TOP of
+       absolutely everything else on the page, including the sticky header (z-index: 1000). */
+
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+    /* Covers the ENTIRE screen from corner to corner. */
+
     background-color: rgba(10, 12, 16, 0.95);
+    /* A near-solid very dark background (95% opacity).
+       Visually: the page behind it almost completely disappears. */
+
     backdrop-filter: blur(8px);
+    /* Blurs the page content behind the overlay by 8px.
+       Visually: creates a dramatic frosted-glass dimming effect on the background. */
+
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* When displayed as flex: centers the image vertically and horizontally,
+       and stacks the image and caption in a column layout. */
+
     overflow: auto;
+    /* Allows scrolling inside the lightbox if the image is very tall.
+       Visually: very tall images don't get cut off — you can scroll to see them. */
 }
 
+
 /* FULLSCREEN TARGET IMAGE PARAMETERS */
+
 .lightbox-content {
+    /* Styles the enlarged image displayed inside the lightbox. */
+
     margin: auto;
     display: block;
+    /* Centers the image inside the overlay. */
+
     width: 92%;
     max-width: 450px;
+    /* Image takes 92% of the screen width, but never exceeds 450px.
+       Visually: the image fills most of the screen on mobile, looks good on larger screens too. */
+
     height: auto;
     max-height: 80vh;
+    /* Height is automatic but capped at 80% of the visible screen height (vh = viewport height).
+       Visually: very tall images don't overflow off the screen. */
+
     object-fit: contain;
+    /* Scales the image to FIT without cropping any part of it.
+       Visually: you always see the full image, with empty space on sides if needed. */
+
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    /* Rounded corners and a deep shadow beneath the enlarged image.
+       Visually: the image looks like a floating panel in the dark overlay. */
+
     animation: zoomInPortal 0.25s cubic-bezier(0.1, 0.8, 0.25, 1);
+    /* Plays the 'zoomInPortal' animation when the lightbox opens.
+       Duration: 0.25 seconds. The cubic-bezier curve makes it snap in quickly
+       then ease to a smooth stop — like a spring.
+       Visually: the image POPS into view with a satisfying zoom-in entrance. */
 }
 
 @keyframes zoomInPortal {
+    /* Defines the ZOOM IN animation used when the lightbox opens. */
+
     from { transform: scale(0.9); opacity: 0; }
+    /* START STATE: image is at 90% size and fully transparent (invisible). */
+
     to { transform: scale(1); opacity: 1; }
+    /* END STATE: image is at full 100% size and fully visible.
+       Visually: the image grows from slightly small to full size while fading in. */
 }
 
+
 /* INTERFACE DISMISS BUTTON */
+
 .close-portal-btn {
+    /* Styles the × (close) button in the top-right corner of the lightbox. */
+
     position: absolute;
     top: 20px;
     right: 25px;
+    /* Pins the button to the TOP-RIGHT corner of the screen.
+       Visually: the × always appears in the top-right, easy to reach on mobile. */
+
     color: #ffffff;
+    /* White X symbol. */
+
     font-size: 35px;
+    /* Large × symbol — easy to tap on a touch screen. */
+
     font-weight: 300;
+    /* Thin font weight gives the × a light, elegant appearance.
+       Visually: a delicate white × that doesn't feel heavy or aggressive. */
+
     cursor: pointer;
+    /* Hand cursor on hover — signals it's clickable/tappable. */
+
     line-height: 1;
+    /* Removes extra vertical spacing around the × character. */
 }
 
 .lightbox-caption {
+    /* Styles the small text caption beneath the lightbox image. */
+
     margin-top: 15px;
+    /* Space between the image and the caption text below it. */
+
     font-size: 0.85rem;
     color: #9ca3af;
+    /* Small, muted gray caption text. */
+
     font-family: 'Space Grotesk', sans-serif;
-}   
+}
+
 
 /* ==========================================================================
    7. MINIMALIST TERMINAL FOOTER STYLES
+   
+   Styles the bottom status bar with the disclaimer, system status dot,
+   and copyright notice.
    ========================================================================== */
+
 .terminal-footer {
     margin-top: 40px;
+    /* Large gap above the footer — separates it clearly from the last section.
+       Visually: the footer feels like a separate, bottom-of-page zone. */
+
     padding-bottom: 20px;
+    /* Space at the very bottom so content doesn't sit flush against the screen edge. */
+
     width: 100%;
 }
 
 .footer-divider {
+    /* The thin horizontal line that separates the footer from the content above. */
+
     width: 100%;
     height: 1px;
+    /* A 1px tall line — extremely thin.
+       Visually: a razor-thin divider line. */
+
     background: linear-gradient(90deg, #1f2635 0%, rgba(31, 38, 53, 0.1) 100%);
+    /* The line fades from a visible dark-blue on the LEFT to nearly invisible on the RIGHT.
+       Visually: the divider gracefully fades out toward the right edge — an elegant touch. */
+
     margin-bottom: 15px;
+    /* Space below the divider before the disclaimer text. */
 }
 
 .footer-disclaimer {
+    /* Styles the legal disclaimer text in the footer. */
+
     font-size: 0.70rem;
+    /* Very small font — this text is intentionally de-emphasized. */
+
     line-height: 1.5;
-    /* Clean, ultra-faint gray opacity match */
-    color: rgba(156, 163, 175, 0.15); 
+
+    color: rgba(156, 163, 175, 0.15);
+    /* An almost INVISIBLE gray — only 15% opacity.
+       Visually: the disclaimer is ghostly faint, present for legal purposes
+       but not visually distracting. A deliberate design choice. */
+
     text-align: justify;
     margin-bottom: 20px;
     font-family: 'Space Grotesk', sans-serif;
 }
 
 .footer-metadata {
+    /* The bottom row containing the status dot and copyright text side by side. */
+
     display: flex;
     justify-content: space-between;
+    /* Pushes status to the LEFT and copyright to the RIGHT.
+       Visually: two pieces of metadata sit at opposite ends of the footer bar. */
+
     align-items: center;
+    /* Vertically centers both pieces of text in the row. */
+
     font-size: 0.70rem;
     font-family: 'Space Grotesk', sans-serif;
 }
 
 .meta-status {
-    /* Dimmed the status indicator dot to blend beautifully with the faint footer style */
-    color: rgba(16, 185, 129, 0.35); 
+    /* Styles the "● System Live" indicator on the left of the footer. */
+
+    color: rgba(16, 185, 129, 0.35);
+    /* A soft green color at only 35% opacity.
+       Visually: the green dot glows very faintly — like a distant indicator light.
+       Deliberately subtle to match the ghostly footer aesthetic. */
+
     font-weight: 500;
 }
 
 .meta-copyright {
-    /* Transparent gray copyright style */
-    color: rgba(156, 163, 175, 0.15); 
+    /* Styles the copyright text on the right of the footer. */
+
+    color: rgba(156, 163, 175, 0.15);
+    /* Same near-invisible 15% opacity gray as the disclaimer.
+       Visually: the copyright is present but whisper-quiet — intentional. */
+
     font-weight: 400;
 }
