@@ -138,3 +138,21 @@ function closeLightbox() {
         portal.style.display = "none";
     }
 }
+//Whatsapp Icon Logic Flow
+/**
+ * Handles the smooth interface toggling for the floating WhatsApp panel element.
+ */
+function toggleWhatsAppPanel() {
+    const panel = document.getElementById('waPanel');
+    const arrow = document.getElementById('waArrow');
+    
+    // Toggle our CSS visibility state utility class
+    panel.classList.toggle('hidden-state');
+    
+    // Evaluate current state and swap directional arrow properties
+    if (panel.classList.contains('hidden-state')) {
+        arrow.textContent = '<'; // Points inward to show it can be drawn back out
+    } else {
+        arrow.textContent = '>'; // Points outward to indicate it can slide away
+    }
+}

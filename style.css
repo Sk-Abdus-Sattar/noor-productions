@@ -851,3 +851,99 @@ tr:nth-child(even) {
 
     font-weight: 400;
 }
+/* WhatsApp Floating Button Styling */
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 24px; /* Perfectly spaced from the bottom of a Pixel 7 screen */
+    right: 24px;  /* Spaced from the right edge */
+    background-color: #25D366; /* Official WhatsApp Green */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; /* Ensures it stays on top of all other elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Icon centering */
+.whatsapp-icon {
+    margin-top: 0;
+}
+
+/* Subtle hover/tap animation for a premium feel */
+/* ==========================================
+   Toggleable WhatsApp Floating Panel Styles
+   ========================================== */
+
+/* ==========================================
+   Toggleable WhatsApp Floating Panel Styles
+   ========================================== */
+
+.wa-floating-panel {
+    position: fixed;
+    bottom: 24px;
+    right: 24px; /* Default visible state positioning */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF; /* High-contrast solid container to block background text */
+    padding: 4px 6px 4px 4px;   /* Tightened padding for a compact fit */
+    border-radius: 30px;        /* Smooth rounded pill aesthetic */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* When this active class is added via JS, the panel slides right off-screen */
+.wa-floating-panel.hidden-state {
+    /* Slides the panel right, leaving only the custom arrow button visible */
+    transform: translateX(calc(100% - 28px)); 
+}
+
+/* The Toggle Arrow Button Styling */
+.wa-toggle-btn {
+    background: none;
+    border: none;
+    color: #121212; /* Dark industrial accent for visibility */
+    font-family: 'Space Grotesk', monospace;
+    font-size: 14px; /* Slightly smaller text for the arrow to match */
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 6px 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* The WhatsApp Action Click Wrapper */
+.whatsapp-badge-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;  /* Reduced from 44px for a much smaller, cleaner size */
+    height: 32px;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Constraining the 3D Image Asset Dimensionally */
+.whatsapp-badge-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+/* Micro-interaction bounce feedback when interacting with the button */
+.whatsapp-badge-link:active .whatsapp-badge-img {
+    transform: scale(0.92);
+}

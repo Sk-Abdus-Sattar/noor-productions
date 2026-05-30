@@ -138,7 +138,7 @@
              The class 'prestige-about-box' applies special styling in CSS:
              likely a dark card with a red left-border accent, matching the terminal theme. -->
 
-            NOOR Productions operates as an autonomous digital architecture and animation studio. We specialize in engineering high-fidelity digital systems by utilizing modern procedural syntax frameworks alongside heuristically-driven design models.
+            We build websites, write content, and grow your business online — so you can focus on what you do best.
             <!-- This is the plain text content describing NOOR Productions.
                  Visually: it appears as justified body text inside the styled dark box. -->
 
@@ -201,7 +201,7 @@
         </div>
         <!-- END of table-viewport (the horizontal scroll wrapper) -->
 
-        <p class="table-disclaimer">*Post-delivery modification parameters are static; bargaining scripts are restricted.</p>
+        <p class="table-disclaimer">*Post-delivery modification parameters are static; prices are fixed.</p>
         <!-- This is a small DISCLAIMER line below the table.
              It clarifies that the asterisk (*) on 'Professional Business Platforms' means:
              prices are fixed after delivery — no renegotiation.
@@ -338,7 +338,20 @@
          SCRIPT LOADER — Connecting our JavaScript file
          ============================================ -->
 
-    <script src="script.js"></script>
+   <div class="wa-floating-panel" id="waPanel">
+        <button class="wa-toggle-btn" id="waToggleBtn" onclick="toggleWhatsAppPanel()" aria-label="Toggle chat options">
+            <span id="waArrow">&gt;</span>
+        </button>
+        
+        <a href="https://wa.me/919832596691?text=Hi%20Noor%20Productions!%20I%20found%20you%20on%20Instagram%20and%20I'm%20interested%20in%20your%20services." 
+           class="whatsapp-badge-link" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Contact us on WhatsApp">
+            <img src="Assets/whatsapp_logo.png" alt="WhatsApp" class="whatsapp-badge-img">
+        </a>
+    </div>
+         <script src="script.js"></script>
     <!-- This loads our JavaScript file at the VERY BOTTOM of the page.
          Placing it here is intentional — it ensures all the HTML above has
          fully loaded before the script runs. This prevents errors where JS
