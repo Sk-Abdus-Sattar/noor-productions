@@ -121,6 +121,7 @@ body {
     height: auto;
     /* Lets the height adjust automatically based on the width.
        Visually: the logo never gets stretched or squished. */
+   object-fit: contain;
 
     display: block;
     /* Removes the tiny default gap that appears below inline images.
