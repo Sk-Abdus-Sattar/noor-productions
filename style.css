@@ -141,7 +141,7 @@ body {
 
     width: 100%;
     /* Stretches the slider area to full screen width. */
-   max-width: 100vw;
+   max-width: 50vw;
    /* Ensures the container never grows wider than the visible screen width */
 
     background: linear-gradient(180deg, #12161f 0%, #0c0e12 100%);
