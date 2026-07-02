@@ -139,7 +139,7 @@ body {
 .slider-container {
     /* The OUTER FRAME of the entire carousel section. */
 
-    width: 100%;
+    width: 50%;
     /* Stretches the slider area to full screen width. */
    max-width: 50vw;
    /* Ensures the container never grows wider than the visible screen width */
