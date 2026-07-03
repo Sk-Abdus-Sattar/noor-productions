@@ -121,7 +121,6 @@ body {
     height: auto;
     /* Lets the height adjust automatically based on the width.
        Visually: the logo never gets stretched or squished. */
-   object-fit: contain;
 
     display: block;
     /* Removes the tiny default gap that appears below inline images.
@@ -139,10 +138,8 @@ body {
 .slider-container {
     /* The OUTER FRAME of the entire carousel section. */
 
-    width: 50%;
+    width: 100%;
     /* Stretches the slider area to full screen width. */
-   max-width: 50vw;
-   /* Ensures the container never grows wider than the visible screen width */
 
     background: linear-gradient(180deg, #12161f 0%, #0c0e12 100%);
     /* Applies a TOP-TO-BOTTOM gradient:
@@ -157,8 +154,6 @@ body {
     border-bottom: 1px solid #1f2635;
     /* A thin horizontal line at the bottom of the slider section.
        Visually: acts as a subtle dark divider between the carousel and content below. */
-   overflow: hidden; 
-    /* Prevents any content inside from spilling out and causing layout issues */
 }
 
 .slider-wrapper {
@@ -951,4 +946,51 @@ tr:nth-child(even) {
 /* Micro-interaction bounce feedback when interacting with the button */
 .whatsapp-badge-link:active .whatsapp-badge-img {
     transform: scale(0.92);
+}
+
+
+/* ==========================================================================
+   DESKTOP / LARGE SCREEN BREAKPOINT
+   
+   Everything above this point was written mobile-first, meaning cards and
+   images stretch to fill the FULL width of whatever screen they're on.
+   That's fine on a ~375px phone, but on a ~1920px PC monitor the same
+   percentage-based sizing blows images up to nearly full-screen size.
+
+   This block only activates on screens 768px and wider (tablets/laptops/
+   desktops) and re-centers the whole layout inside a fixed max-width,
+   the way most responsive sites do, instead of letting it stretch edge
+   to edge.
+   ========================================================================== */
+
+@media (min-width: 768px) {
+
+    body {
+        /* Centers all direct content horizontally once we're past mobile width */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fixed-header {
+        /* Header bar itself can stay full width, but let's cap its inner content */
+        justify-content: center;
+    }
+
+    .slider-container,
+    .main-content,
+    footer.terminal-footer {
+        /* Cap the main content column so it doesn't stretch across a huge monitor */
+        width: 100%;
+        max-width: 480px;
+    }
+
+    .slide-card {
+        /* THE KEY FIX: instead of "100% of container width minus 30px",
+           cap each carousel card at a fixed pixel size on larger screens.
+           This stops the NOOR logo image from ballooning to fill a 1900px
+           wide flex item. */
+        flex: 0 0 calc(100% - 30px);
+        max-width: 420px;
+    }
 }
